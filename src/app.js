@@ -1,5 +1,10 @@
+require('dotenv').config();
+
 import express from 'express';
+import cors from 'cors';
 import routes from './routes';
+import swaggerUi from 'swagger-ui-express';
+import swagger from './config/swagger';
 import './database';
 import AppError from './app/error/AppError';
 
@@ -12,7 +17,9 @@ class App{
   }
 
   middlewares(){
+      this.server.use(cors())
       this.server.use(express.json())
+      this.server.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
     };
 
     routes(){

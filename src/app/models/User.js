@@ -7,10 +7,7 @@ class User extends Model {
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
-        password: {
-          type: Sequelize.VIRTUAL,
-          allowNull: false,
-        },
+        password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
       },
       {
@@ -21,8 +18,20 @@ class User extends Model {
       if(user.password) {
         user.password_hash = bcrypt.hashSync(user.password, 8);
       }
-    })
-  };
+    });
+    return this;
+  }
+  checkPassword(password) {
+    if (!password || !this.password_hash) {
+      throw new Error("User or password_hash is null or undefined");
+    }
+
+    try {
+      return bcrypt.compare(password, this.password_hash);
+    } catch (error) {
+      throw new Error("Error comparing password", { cause: error });
+    }
+  }
 }
 
 export default User;
