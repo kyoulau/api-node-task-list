@@ -1,0 +1,55 @@
+# Comentários em arquivos .gitignore começam com #
+
+# Dependências
+# Ignora o diretório onde as dependências do projeto (pacotes npm, etc.) são instaladas.
+# Este diretório pode ser recriado executando `npm install` ou `yarn install`.
+node_modules/
+
+# Arquivos de Build
+# Ignora os diretórios e arquivos gerados pelo processo de build.
+# Estes são arquivos de distribuição e não o código-fonte.
+/build
+/dist
+/.out
+/.next
+
+# Logs
+# Ignora arquivos de log que podem conter informações sensíveis ou que são
+# específicos do ambiente de desenvolvimento.
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Arquivos de ambiente
+# Nunca comite arquivos .env. Eles contêm segredos (chaves de API, senhas de banco de dados)
+# e configurações específicas do ambiente de cada desenvolvedor.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# É uma boa prática ter um arquivo de exemplo com as variáveis necessárias,
+# que PODE e DEVE ser comitado. A linha abaixo garante que ele não seja ignorado.
+!/.env.example
+!/.env.template
+
+# Relatórios de Testes e Cobertura
+# Ignora os relatórios gerados pela execução de testes e análise de cobertura de código.
+coverage/
+.nyc_output/
+.eslintcache
+
+# Arquivos gerados pelo Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDEs e Editores de Código
+.idea/
+.vscode/
+*.swp
+
