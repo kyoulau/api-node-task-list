@@ -6,6 +6,7 @@ class Task extends Model {
       {
         task: Sequelize.STRING,
         check: Sequelize.BOOLEAN,
+        user_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -14,8 +15,8 @@ class Task extends Model {
     return this;
   }
 
-  static associate(moodels) {
-    this.belongsTo(moodels.User, { foreignKey: "user_id", as: "user" });
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: "user_id", as: "user" });
   }
 }
 
