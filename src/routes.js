@@ -2,6 +2,7 @@ import { Router } from "express";
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
 import authMiddleware from "./app/middlewares/auth";
+import TaskControler from "./app/controllers/TaskControler";
 
 const routes = Router();
 
@@ -77,5 +78,11 @@ routes.put('/user', UserController.update);
 routes.get('/user', UserController.index);
 routes.delete('/user/:id', UserController.destroy);
 routes.get('/users', UserController.findAllUsers);
+
+routes.post('/task', TaskControler.store);
+routes.get('/task', TaskControler.index);
+routes.put('/task/:task_id', TaskControler.update);
+routes.delete('/task/:task_id', TaskControler.destroy);
+
 
 export default routes;
