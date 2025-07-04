@@ -65,8 +65,7 @@ class TaskController {
     async findTaskWhereCheckIsTrue(req, res, next) {
     try {
       const tasks = await Task.findAll({
-        where: { user_id: req.userId },
-        check: true,
+        where: { user_id: req.userId, check: true },
         attributes: [
           'id',
           'task',
@@ -152,4 +151,3 @@ class TaskController {
 }
 
 export default new TaskController();
-
