@@ -1,6 +1,8 @@
 import { Router } from "express";
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
+import authMiddleware from "./app/middlewares/auth";
+
 const routes = Router();
 
 /**
@@ -67,6 +69,11 @@ routes.post('/sessions', SessionController.store);
  *         description: Erro de validação ou usuário já existente.
  */
 routes.post('/user', UserController.store);
+
+// rotas que precisam de autenticação
+routes.use(authMiddleware);
+
+routes.put('/user', UserController.update);
 routes.get('/user', UserController.index);
 routes.delete('/user/:id', UserController.destroy);
 

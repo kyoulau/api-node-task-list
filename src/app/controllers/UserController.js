@@ -38,6 +38,14 @@ class UserController {
 
   }
 
+  async update(req, res) {
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
   async destroy(req, res) {
 
   }
